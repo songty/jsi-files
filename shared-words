@@ -7,6 +7,8 @@
 var program = require('commander');
 var _ = require('./index');
 
+var firstArray = [];
+var secondArray = [];
 
 program
   .version('0.0.1')
@@ -21,7 +23,10 @@ if (program.peppers) console.log('  - peppers');
 if (program.pineapple) console.log('  - pineapple');
 if (program.bbq) console.log('  - bbq');
 console.log('  - %s cheese', program.cheese);
-_.readCheck(program.args[0]);
+firstArray = _.readCheck(program.args[0], function(){});
+secondArray = _.readCheck(program.args[1], function() {});
+
+_.compare(firstArray, secondArray);
 
 //Coersion
 
