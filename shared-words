@@ -6,27 +6,42 @@
 
 var program = require('commander');
 var _ = require('./index');
+var fs = require('fs');
 
 var firstArray = [];
 var secondArray = [];
 
 program
   .version('0.0.1')
-  .option('-p, --peppers', 'Add peppers')
-  .option('-P, --pineapple', 'Add pineapple')
-  .option('-b, --bbq', 'Add bbq sauce')
-  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
+  // .option('-p, --peppers', 'Add peppers')
+  // .option('-P, --pineapple', 'Add pineapple')
+  // .option('-b, --bbq', 'Add bbq sauce')
+  // .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
   .parse(process.argv);
 
-console.log('you ordered a pizza with:');
-if (program.peppers) console.log('  - peppers');
-if (program.pineapple) console.log('  - pineapple');
-if (program.bbq) console.log('  - bbq');
-console.log('  - %s cheese', program.cheese);
-firstArray = _.readCheck(program.args[0], function(){});
-secondArray = _.readCheck(program.args[1], function() {});
+// console.log('you ordered a pizza with:');
+// if (program.peppers) console.log('  - peppers');
+// if (program.pineapple) console.log('  - pineapple');
+// if (program.bbq) console.log('  - bbq');
+// console.log('  - %s cheese', program.cheese);
+var options = { encoding: 'utf8' };
 
-_.compare(firstArray, secondArray);
+
+
+fs.readFile(program.args[1], options, function(err, contents) {
+  contentsAsArray = contents.split("\n");
+  console.log(contentsAsArray);
+  fs.readFile(program.args[0], options, function(err, contents) {
+  contentsAsArray = contents.split("\n");
+  console.log(contentsAsArray);
+
+    var sharedWords = _.compare(firstArray, secondArray);
+    console.log(firstArray);
+    console.log(secondArray);
+    console.log(sharedWords);
+  });
+});
+
 
 //Coersion
 
@@ -59,12 +74,12 @@ program
   .option('-v, --verbose', 'A value that can be increased', increaseVerbosity, 0)
   .parse(process.argv);
 
-console.log(' int: %j', program.integer);
-console.log(' float: %j', program.float);
-console.log(' optional: %j', program.optional);
-program.range = program.range || [];
-console.log(' range: %j..%j', program.range[0], program.range[1]);
-console.log(' list: %j', program.list);
-console.log(' collect: %j', program.collect);
-console.log(' verbosity: %j', program.verbose);
-console.log(' args: %j', program.args);
+// console.log(' int: %j', program.integer);
+// console.log(' float: %j', program.float);
+// console.log(' optional: %j', program.optional);
+// program.range = program.range || [];
+// console.log(' range: %j..%j', program.range[0], program.range[1]);
+// console.log(' list: %j', program.list);
+// console.log(' collect: %j', program.collect);
+// console.log(' verbosity: %j', program.verbose);
+// console.log(' args: %j', program.args);

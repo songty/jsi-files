@@ -3,11 +3,14 @@ var program = require('commander');
 var sharedWords = [];
 
 module.exports.readCheck = function (filePath) {
+	var contentsAsArray = [];
 	fs.readFile(filePath,
 	{ encoding: 'utf8' }, function(err, contents) {
-  		console.log(contents);
-	});
+  		contentsAsArray = contents.split("\n");
+  		console.log(contentsAsArray);
+	}
 
+	);
 };
 
 var smallCompare = function (word, array) {
@@ -18,7 +21,7 @@ var smallCompare = function (word, array) {
 	}
 };
 
-var compare = function (array1, array2) {
+module.exports.compare = function (array1, array2) {
 	var longer, shorter = [];
 	if (array1.length > array2.length) {
 		longer = array1;
@@ -30,16 +33,8 @@ var compare = function (array1, array2) {
 	}
 	longer.forEach(function (word) {
 		smallCompare(word, shorter);
-
 	});
-	// for (var i = 0; i < longer.length; i++) {
-	// 	if (longer[i] === shorter[]);
-	// };
+	return sharedWords;
 };
 
-
-
-
-compare(['hellow','you', 'tian', 'world'],['tian','world','joe']);
-console.log(sharedWords);
 
