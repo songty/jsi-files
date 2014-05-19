@@ -21,6 +21,7 @@ if (program.peppers) console.log('  - peppers');
 if (program.pineapple) console.log('  - pineapple');
 if (program.bbq) console.log('  - bbq');
 console.log('  - %s cheese', program.cheese);
+_.readCheck(program.args[0]);
 
 //Coersion
 

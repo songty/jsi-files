@@ -6,11 +6,11 @@ var _ = require('../index');
 
 describe('files', function() {
   it('can read fixtures', function(done) {
-    var file = path.join(__dirname, 'fixtures', 'test-file1.txt');
-    fs.readFile(file, { encoding: 'utf8' }, function(err, contents) {
+    // var file = path.join(__dirname, 'fixtures', 'test-file1.txt');
+    _.readCheck('test/fixtures/test-file1.txt', function(err, contents) {
       expect(err).to.not.exist;
-      expect(contents).to.eql('hello world\n');
+      expect(contents).to.eql('hello you world');
       done();
-    });
+  	});;
   });
-});
+ });
